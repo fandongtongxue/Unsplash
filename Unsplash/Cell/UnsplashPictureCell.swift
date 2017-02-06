@@ -10,8 +10,6 @@ import UIKit
 
 class UnsplashPictureCell: UICollectionViewCell {
     
-    let screenWidth = UIScreen.main.bounds.size.width
-    let screenHeight = UIScreen.main.bounds.size.height
     var imageView : UIImageView?
     var model : UnsplashPictureModel?
     
@@ -19,7 +17,7 @@ class UnsplashPictureCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         //初始化各种控件
-        var imageView = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth/3, height: screenHeight/3))
+        let imageView = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth/3, height: screenHeight/3))
         imageView.contentMode = UIViewContentMode.scaleAspectFill
         imageView.clipsToBounds = true
         self.addSubview(imageView)
@@ -27,7 +25,7 @@ class UnsplashPictureCell: UICollectionViewCell {
     }
     
     func setModel(model:UnsplashPictureModel) {
-        self.imageView?.sd_setImage(with: URL.init(string: model.urls.small))
+        self.imageView?.sd_setImage(with: URL.init(string: model.urls.thumb))
     }
     
     required init(coder aDecoder: NSCoder) {

@@ -10,4 +10,5 @@ target 'Unsplash' do
   pod 'MBProgressHUD'
   pod 'Alamofire', '~> 4.0'
   pod 'MJExtension'
+  pod 'MJRefresh'
 end

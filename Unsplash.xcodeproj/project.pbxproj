@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		4F015B6B4B66A1EE7ADFD130 /* Pods_Unsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473CCD8FAC45BF56BF8A1BB0 /* Pods_Unsplash.framework */; };
 		AFAAA8741E480FD80052A17A /* UnsplashPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAA8731E480FD80052A17A /* UnsplashPictureCell.swift */; };
+		AFAAA87B1E48444A0052A17A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAAA87A1E48444A0052A17A /* CloudKit.framework */; };
+		AFAAA87E1E484BA50052A17A /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAA87D1E484BA50052A17A /* PictureViewController.swift */; };
+		AFAAA8811E4860A30052A17A /* refresh.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFAAA8801E4860A30052A17A /* refresh.plist */; };
+		AFAAA8831E4864F70052A17A /* AKTA.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFAAA8821E4864F70052A17A /* AKTA.plist */; };
 		AFAB874F1E45C3CA00C70E67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAB874E1E45C3CA00C70E67 /* AppDelegate.swift */; };
 		AFAB87511E45C3CA00C70E67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAB87501E45C3CA00C70E67 /* ViewController.swift */; };
 		AFAB87541E45C3CA00C70E67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFAB87521E45C3CA00C70E67 /* Main.storyboard */; };
@@ -27,6 +31,11 @@
 		8D0DC43E4D6AC4CCD17852E9 /* Pods-Unsplash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplash.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Unsplash/Pods-Unsplash.debug.xcconfig"; sourceTree = "<group>"; };
 		918E34EB16982556A46656DE /* Pods-Unsplash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplash.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unsplash/Pods-Unsplash.release.xcconfig"; sourceTree = "<group>"; };
 		AFAAA8731E480FD80052A17A /* UnsplashPictureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashPictureCell.swift; sourceTree = "<group>"; };
+		AFAAA8771E48423E0052A17A /* Unsplash.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Unsplash.entitlements; sourceTree = "<group>"; };
+		AFAAA87A1E48444A0052A17A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		AFAAA87D1E484BA50052A17A /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
+		AFAAA8801E4860A30052A17A /* refresh.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = refresh.plist; sourceTree = "<group>"; };
+		AFAAA8821E4864F70052A17A /* AKTA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AKTA.plist; sourceTree = "<group>"; };
 		AFAB874B1E45C3CA00C70E67 /* Unsplash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unsplash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFAB874E1E45C3CA00C70E67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFAB87501E45C3CA00C70E67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFAB87641E45C7FF00C70E67 /* Crashlytics.framework in Frameworks */,
+				AFAAA87B1E48444A0052A17A /* CloudKit.framework in Frameworks */,
 				4F015B6B4B66A1EE7ADFD130 /* Pods_Unsplash.framework in Frameworks */,
 				AFAB87651E45C7FF00C70E67 /* Fabric.framework in Frameworks */,
 			);
@@ -69,6 +79,7 @@
 		31C1913B9D1E39D24CC07D00 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AFAAA87A1E48444A0052A17A /* CloudKit.framework */,
 				473CCD8FAC45BF56BF8A1BB0 /* Pods_Unsplash.framework */,
 			);
 			name = Frameworks;
@@ -80,6 +91,23 @@
 				AFAAA8731E480FD80052A17A /* UnsplashPictureCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		AFAAA87C1E484B890052A17A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AFAAA87D1E484BA50052A17A /* PictureViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AFAAA87F1E48608F0052A17A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				AFAAA8821E4864F70052A17A /* AKTA.plist */,
+				AFAAA8801E4860A30052A17A /* refresh.plist */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		AFAB87421E45C3CA00C70E67 = {
@@ -103,6 +131,9 @@
 		AFAB874D1E45C3CA00C70E67 /* Unsplash */ = {
 			isa = PBXGroup;
 			children = (
+				AFAAA8771E48423E0052A17A /* Unsplash.entitlements */,
+				AFAAA87F1E48608F0052A17A /* Resource */,
+				AFAAA87C1E484B890052A17A /* Controller */,
 				AFAAA8721E480FB80052A17A /* Cell */,
 				AFAB87761E45D58C00C70E67 /* Config */,
 				AFAB87661E45CAE300C70E67 /* Model */,
@@ -182,7 +213,18 @@
 					AFAB874A1E45C3CA00C70E67 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = F9N98X7P4L;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+							com.apple.Siri = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -211,7 +253,9 @@
 			files = (
 				AFAB87591E45C3CA00C70E67 /* LaunchScreen.storyboard in Resources */,
 				AFAB87561E45C3CA00C70E67 /* Assets.xcassets in Resources */,
+				AFAAA8811E4860A30052A17A /* refresh.plist in Resources */,
 				AFAB87541E45C3CA00C70E67 /* Main.storyboard in Resources */,
+				AFAAA8831E4864F70052A17A /* AKTA.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFAAA8741E480FD80052A17A /* UnsplashPictureCell.swift in Sources */,
+				AFAAA87E1E484BA50052A17A /* PictureViewController.swift in Sources */,
 				AFAB87681E45CB1100C70E67 /* UnsplashPictureModel.swift in Sources */,
 				AFAB87511E45C3CA00C70E67 /* ViewController.swift in Sources */,
 				AFAB876E1E45CD6E00C70E67 /* UnsplashUserProfileModel.swift in Sources */,
@@ -413,15 +458,19 @@
 			baseConfigurationReference = 8D0DC43E4D6AC4CCD17852E9 /* Pods-Unsplash.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Unsplash/Unsplash.entitlements;
 				DEVELOPMENT_TEAM = F9N98X7P4L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Unsplash/ThirdPart",
 				);
 				INFOPLIST_FILE = Unsplash/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.fandong.Unsplash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d2f4ecfa-8284-4fdf-95b5-1b4102ae7023";
+				PROVISIONING_PROFILE_SPECIFIER = unsplash_profile;
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/fandongme/MCode/Swift/Unsplash/Unsplash/Config/Bridge.h;
 				SWIFT_VERSION = 3.0;
 			};
@@ -432,15 +481,20 @@
 			baseConfigurationReference = 918E34EB16982556A46656DE /* Pods-Unsplash.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Unsplash/Unsplash.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = F9N98X7P4L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Unsplash/ThirdPart",
 				);
 				INFOPLIST_FILE = Unsplash/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.fandong.Unsplash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "dde4eeb6-7f63-4598-85ab-db098eae5634";
+				PROVISIONING_PROFILE_SPECIFIER = unsplash_profile_dis;
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/fandongme/MCode/Swift/Unsplash/Unsplash/Config/Bridge.h;
 				SWIFT_VERSION = 3.0;
 			};
