@@ -15,9 +15,9 @@ import MJRefresh
 
 let url = "https://api.unsplash.com/photos/?client_id=522f34661134a2300e6d94d344a7ab6424e028a51b31353363b7a8cce11d73b6&per_page=20&page="
 let cellId = "UnsplashPictureCellID"
-let statusBarHeight  : CGFloat = 20.0
-let screenWidth = UIScreen.main.bounds.size.width
-let screenHeight = UIScreen.main.bounds.size.height
+let statusBarHeight  : CGFloat = 20
+let screenWidth : CGFloat = UIScreen.main.bounds.size.width
+let screenHeight : CGFloat = UIScreen.main.bounds.size.height
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -57,6 +57,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             self.page = 1
             self.requestFirstPageData()
         }
+        header?.stateLabel.textColor = UIColor.white
+        header?.lastUpdatedTimeLabel.textColor = UIColor.white
         self.collectionView.mj_header = header;
     }
     
@@ -67,6 +69,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         Alamofire.request(firstUrl, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON(queue: DispatchQueue.main, options: .mutableContainers) { (response) in
             switch response.result{
             case .success:
+                self.dataArray.removeAllObjects()
                 if let result = response.result.value{
                     let array = result as! NSMutableArray
                     let model = UnsplashPictureModel.mj_objectArray(withKeyValuesArray: array) as [AnyObject]
@@ -78,6 +81,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                         self.page += 1
                         self.requestMorePageData(page: self.page)
                     }
+                    footer?.stateLabel.textColor = UIColor.white
                     self.collectionView.mj_footer = footer
                 }
             case.failure(let error):

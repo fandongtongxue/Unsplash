@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class UnsplashPictureCell: UICollectionViewCell {
     
@@ -25,7 +26,7 @@ class UnsplashPictureCell: UICollectionViewCell {
     }
     
     func setModel(model:UnsplashPictureModel) {
-        self.imageView?.sd_setImage(with: URL.init(string: model.urls.thumb))
+        self.imageView?.sd_setImage(with: URL.init(string: model.urls.thumb), placeholderImage: nil, options: SDWebImageOptions.progressiveDownload)
     }
     
     required init(coder aDecoder: NSCoder) {

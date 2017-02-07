@@ -12,28 +12,49 @@ import SDWebImage
 class PictureViewController: UIViewController {
     
     var model : UnsplashPictureModel?
-    var imageView :UIImageView?
     
+    lazy var progressView:UIProgressView = {
+        let progressView = UIProgressView.init(frame: CGRect.init(x: 0, y: statusBarHeight, width: screenWidth, height: 2))
+        progressView.progressViewStyle = UIProgressViewStyle.bar
+        progressView.tintColor = UIColor.blue
+        return progressView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.view.backgroundColor = UIColor.white
-        let imageView = UIImageView.init(frame: CGRect.init(x: 0, y: statusBarHeight, width: screenWidth, height: screenHeight - statusBarHeight))
+        self.view.backgroundColor = UIColor.black
+        //初始化滚动视图坐标
+        var scrollViewHeight : CGFloat = 0.0
+        scrollViewHeight = screenHeight - statusBarHeight
+        var scrollViewWidth : CGFloat = 0.0
+        scrollViewWidth = self.StringToFloat(str: (self.model?.height)!) * scrollViewHeight / self.StringToFloat(str: (self.model?.width)!)
+        //滚动视图
+        let scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: statusBarHeight, width: screenWidth, height: screenHeight - statusBarHeight))
+        scrollView.contentSize = CGSize.init(width: scrollViewWidth, height: scrollViewHeight)
+        self.view.addSubview(scrollView)
+        //图片
+        let imageView = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height))
         imageView.contentMode = UIViewContentMode.scaleAspectFill
-        self.view.addSubview(imageView)
-        self.imageView = imageView
+        scrollView.addSubview(imageView)
 //        print("点击图片的地址:" + (self.model?.urls.raw)! as String)
-        self.imageView?.sd_setImage(with: URL.init(string: (self.model?.urls.full)!), placeholderImage: nil, options: SDWebImageOptions.progressiveDownload, progress: { (complete, total) in
+        imageView.sd_setImage(with: URL.init(string: (self.model?.urls.raw)!), placeholderImage: nil, options: SDWebImageOptions.progressiveDownload, progress: { (complete, total) in
 //            print("已完成" + String.init(format: "%dKB", complete / 1024))
 //            print("总共" + String.init(format: "%dKB", total / 1024))
+            self.progressView.setProgress(Float(complete) / Float(total), animated: true)
         }, completed: { (image, error, cacheType, url) in
 //            print("图片下载完成")
+            self.progressView.progress = 0
         })
+        self.view.addSubview(self.progressView)
+        //按钮
+        let closeBtn = UIButton.init(type: UIButtonType.infoLight)
+        closeBtn.frame = CGRect.init(x: screenWidth - 32, y: 10 + statusBarHeight, width: 22, height: 22)
+        closeBtn.addTarget(self, action: #selector(dismissVC), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(closeBtn)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
+    func dismissVC()  {
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -42,6 +63,19 @@ class PictureViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return UIStatusBarStyle.lightContent
+    }
+    //String to Float
+    func StringToFloat(str:String)->(CGFloat){
+        let string = str
+        var cgFloat: CGFloat = 0
+        if let doubleValue = Double(string)
+        {
+            cgFloat = CGFloat(doubleValue)
+        }
+        return cgFloat
+    }
 
     /*
     // MARK: - Navigation
