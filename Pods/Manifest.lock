@@ -6,6 +6,9 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - XCGLogger (4.0.0):
+    - XCGLogger/Core (= 4.0.0)
+  - XCGLogger/Core (4.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -13,6 +16,7 @@ DEPENDENCIES:
   - MJExtension
   - MJRefresh
   - SDWebImage (~> 3.8)
+  - XCGLogger (~> 4.0.0)
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
@@ -20,7 +24,8 @@ SPEC CHECKSUMS:
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  XCGLogger: 38063ea89b4c8b23232d18efd2e12eb0005f3ea4
 
-PODFILE CHECKSUM: 460abb88ad6f39e2dfb0f168f991c888b314f5bf
+PODFILE CHECKSUM: f2367ccff45dc51021c8ce49467f49a2383d418c
 
 COCOAPODS: 1.1.0.beta.2

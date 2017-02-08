@@ -471,7 +471,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d2f4ecfa-8284-4fdf-95b5-1b4102ae7023";
 				PROVISIONING_PROFILE_SPECIFIER = unsplash_profile;
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/fandongme/MCode/Swift/Unsplash/Unsplash/Config/Bridge.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -495,7 +495,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "dde4eeb6-7f63-4598-85ab-db098eae5634";
 				PROVISIONING_PROFILE_SPECIFIER = unsplash_profile_dis;
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/fandongme/MCode/Swift/Unsplash/Unsplash/Config/Bridge.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

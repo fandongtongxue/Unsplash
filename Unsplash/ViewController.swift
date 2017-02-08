@@ -59,6 +59,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         header?.stateLabel.textColor = UIColor.white
         header?.lastUpdatedTimeLabel.textColor = UIColor.white
+        header?.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.white
         self.collectionView.mj_header = header;
     }
     
@@ -86,7 +87,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 }
             case.failure(let error):
                 self.collectionView.mj_header.endRefreshing()
-                print("错误"+String.init(format: "%@", error as CVarArg))
+                log.error(error)
                 let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
                 hud.mode = MBProgressHUDMode.text
                 hud.label.text = String.init(format: "%@", error as CVarArg)

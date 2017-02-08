@@ -24,11 +24,14 @@ class PictureViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.black
+        //Log
+        log.info("图片宽:" + (self.model?.width)! + "高:" + (self.model?.height)!)
         //初始化滚动视图坐标
         var scrollViewHeight : CGFloat = 0.0
         scrollViewHeight = screenHeight - statusBarHeight
         var scrollViewWidth : CGFloat = 0.0
-        scrollViewWidth = self.StringToFloat(str: (self.model?.height)!) * scrollViewHeight / self.StringToFloat(str: (self.model?.width)!)
+        scrollViewWidth = self.StringToFloat(str: (self.model?.width)!) * scrollViewHeight / self.StringToFloat(str: (self.model?.height)!)
+        log.info("适应后图片宽:" + String.init(format: "%.2f", scrollViewWidth) + "高:" + String.init(format: "%.2f", scrollViewHeight))
         //滚动视图
         let scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: statusBarHeight, width: screenWidth, height: screenHeight - statusBarHeight))
         scrollView.contentSize = CGSize.init(width: scrollViewWidth, height: scrollViewHeight)
@@ -37,13 +40,13 @@ class PictureViewController: UIViewController {
         let imageView = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height))
         imageView.contentMode = UIViewContentMode.scaleAspectFill
         scrollView.addSubview(imageView)
-//        print("点击图片的地址:" + (self.model?.urls.raw)! as String)
+        log.info("图片地址" + (self.model?.urls.regular)!)
         imageView.sd_setImage(with: URL.init(string: (self.model?.urls.raw)!), placeholderImage: nil, options: SDWebImageOptions.progressiveDownload, progress: { (complete, total) in
-//            print("已完成" + String.init(format: "%dKB", complete / 1024))
-//            print("总共" + String.init(format: "%dKB", total / 1024))
+//            log.info("已完成" + String.init(format: "%dKB", complete / 1024))
+//            log.info("总共" + String.init(format: "%dKB", total / 1024))
+//            log.info("图片下载进度" + String.init(format: "%.2f", Float(complete) / Float(total)))
             self.progressView.setProgress(Float(complete) / Float(total), animated: true)
         }, completed: { (image, error, cacheType, url) in
-//            print("图片下载完成")
             self.progressView.progress = 0
         })
         self.view.addSubview(self.progressView)

@@ -11,4 +11,5 @@ target 'Unsplash' do
   pod 'Alamofire', '~> 4.0'
   pod 'MJExtension'
   pod 'MJRefresh'
+  pod 'XCGLogger', '~> 4.0.0'
 end
