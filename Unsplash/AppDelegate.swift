@@ -13,6 +13,7 @@ import XCGLogger
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
+
 let log: XCGLogger = {
     // Setup XCGLogger
     let log = XCGLogger.default

@@ -51,9 +51,9 @@ class PictureViewController: UIViewController {
         })
         self.view.addSubview(self.progressView)
         //按钮
-        let closeBtn = UIButton.init(type: UIButtonType.infoLight)
-        closeBtn.frame = CGRect.init(x: screenWidth - 32, y: 10 + statusBarHeight, width: 22, height: 22)
+        let closeBtn = UIButton.init(frame: CGRect.init(x: screenWidth - 64 - statusBarHeight / 2, y: statusBarHeight * 3 / 2, width: 64, height: 64))
         closeBtn.addTarget(self, action: #selector(dismissVC), for: UIControlEvents.touchUpInside)
+        closeBtn.setImage(UIImage.init(named: "picture_btn_close"), for: UIControlState.normal)
         self.view.addSubview(closeBtn)
     }
     

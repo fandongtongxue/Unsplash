@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4F015B6B4B66A1EE7ADFD130 /* Pods_Unsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473CCD8FAC45BF56BF8A1BB0 /* Pods_Unsplash.framework */; };
 		AFAAA8741E480FD80052A17A /* UnsplashPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAA8731E480FD80052A17A /* UnsplashPictureCell.swift */; };
-		AFAAA87B1E48444A0052A17A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFAAA87A1E48444A0052A17A /* CloudKit.framework */; };
 		AFAAA87E1E484BA50052A17A /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAA87D1E484BA50052A17A /* PictureViewController.swift */; };
 		AFAAA8811E4860A30052A17A /* refresh.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFAAA8801E4860A30052A17A /* refresh.plist */; };
 		AFAAA8831E4864F70052A17A /* AKTA.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFAAA8821E4864F70052A17A /* AKTA.plist */; };
@@ -32,7 +31,6 @@
 		918E34EB16982556A46656DE /* Pods-Unsplash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplash.release.xcconfig"; path = "Pods/Target Support Files/Pods-Unsplash/Pods-Unsplash.release.xcconfig"; sourceTree = "<group>"; };
 		AFAAA8731E480FD80052A17A /* UnsplashPictureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashPictureCell.swift; sourceTree = "<group>"; };
 		AFAAA8771E48423E0052A17A /* Unsplash.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Unsplash.entitlements; sourceTree = "<group>"; };
-		AFAAA87A1E48444A0052A17A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		AFAAA87D1E484BA50052A17A /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 		AFAAA8801E4860A30052A17A /* refresh.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = refresh.plist; sourceTree = "<group>"; };
 		AFAAA8821E4864F70052A17A /* AKTA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AKTA.plist; sourceTree = "<group>"; };
@@ -58,7 +56,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFAB87641E45C7FF00C70E67 /* Crashlytics.framework in Frameworks */,
-				AFAAA87B1E48444A0052A17A /* CloudKit.framework in Frameworks */,
 				4F015B6B4B66A1EE7ADFD130 /* Pods_Unsplash.framework in Frameworks */,
 				AFAB87651E45C7FF00C70E67 /* Fabric.framework in Frameworks */,
 			);
@@ -79,7 +76,6 @@
 		31C1913B9D1E39D24CC07D00 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AFAAA87A1E48444A0052A17A /* CloudKit.framework */,
 				473CCD8FAC45BF56BF8A1BB0 /* Pods_Unsplash.framework */,
 			);
 			name = Frameworks;
@@ -222,7 +218,7 @@
 								enabled = 0;
 							};
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -458,7 +454,6 @@
 			baseConfigurationReference = 8D0DC43E4D6AC4CCD17852E9 /* Pods-Unsplash.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Unsplash/Unsplash.entitlements;
 				DEVELOPMENT_TEAM = F9N98X7P4L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -481,7 +476,6 @@
 			baseConfigurationReference = 918E34EB16982556A46656DE /* Pods-Unsplash.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Unsplash/Unsplash.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = F9N98X7P4L;
 				FRAMEWORK_SEARCH_PATHS = (

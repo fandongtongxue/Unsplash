@@ -42,12 +42,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.register(UnsplashPictureCell.self, forCellWithReuseIdentifier:cellId)
         return collectionView;
     }()
+    
+    lazy var helpBtn : UIButton = {
+        let helpBtn = UIButton.init(frame: CGRect.init(x: screenWidth - 64 - statusBarHeight / 2, y: screenHeight - 64 - statusBarHeight / 2, width: 64, height: 64))
+        helpBtn.addTarget(self, action: #selector(helpBtnAction), for: UIControlEvents.touchUpInside)
+        helpBtn.setImage(UIImage.init(named: "home_btn_help"), for: UIControlState.normal)
+        return helpBtn
+    }()
+    
     //生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.view.backgroundColor = UIColor.black
         self.view.addSubview(self.collectionView)
+        self.view.addSubview(self.helpBtn)
         self.initRefresh()
         self.collectionView.mj_header.beginRefreshing()
     }
@@ -113,6 +122,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 self.collectionView.mj_footer.endRefreshing()
             }
         }
+    }
+    //Action
+    func helpBtnAction()  {
+        //进入帮助页面
     }
     //UICollectionViewDelegate
     func numberOfSections(in collectionView: UICollectionView) -> Int {
