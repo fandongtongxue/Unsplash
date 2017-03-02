@@ -10,8 +10,6 @@
 		4F015B6B4B66A1EE7ADFD130 /* Pods_Unsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473CCD8FAC45BF56BF8A1BB0 /* Pods_Unsplash.framework */; };
 		AFAAA8741E480FD80052A17A /* UnsplashPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAA8731E480FD80052A17A /* UnsplashPictureCell.swift */; };
 		AFAAA87E1E484BA50052A17A /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAAA87D1E484BA50052A17A /* PictureViewController.swift */; };
-		AFAAA8811E4860A30052A17A /* refresh.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFAAA8801E4860A30052A17A /* refresh.plist */; };
-		AFAAA8831E4864F70052A17A /* AKTA.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFAAA8821E4864F70052A17A /* AKTA.plist */; };
 		AFAB874F1E45C3CA00C70E67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAB874E1E45C3CA00C70E67 /* AppDelegate.swift */; };
 		AFAB87511E45C3CA00C70E67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAB87501E45C3CA00C70E67 /* ViewController.swift */; };
 		AFAB87541E45C3CA00C70E67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFAB87521E45C3CA00C70E67 /* Main.storyboard */; };
@@ -32,8 +30,6 @@
 		AFAAA8731E480FD80052A17A /* UnsplashPictureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashPictureCell.swift; sourceTree = "<group>"; };
 		AFAAA8771E48423E0052A17A /* Unsplash.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Unsplash.entitlements; sourceTree = "<group>"; };
 		AFAAA87D1E484BA50052A17A /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
-		AFAAA8801E4860A30052A17A /* refresh.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = refresh.plist; sourceTree = "<group>"; };
-		AFAAA8821E4864F70052A17A /* AKTA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AKTA.plist; sourceTree = "<group>"; };
 		AFAB874B1E45C3CA00C70E67 /* Unsplash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unsplash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFAB874E1E45C3CA00C70E67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFAB87501E45C3CA00C70E67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +77,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AF5D7CA61E56E4DC0007C809 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		AFAAA8721E480FB80052A17A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,8 +103,6 @@
 		AFAAA87F1E48608F0052A17A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				AFAAA8821E4864F70052A17A /* AKTA.plist */,
-				AFAAA8801E4860A30052A17A /* refresh.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -131,6 +132,7 @@
 				AFAAA87F1E48608F0052A17A /* Resource */,
 				AFAAA87C1E484B890052A17A /* Controller */,
 				AFAAA8721E480FB80052A17A /* Cell */,
+				AF5D7CA61E56E4DC0007C809 /* View */,
 				AFAB87761E45D58C00C70E67 /* Config */,
 				AFAB87661E45CAE300C70E67 /* Model */,
 				AFAB87611E45C7D800C70E67 /* ThirdPart */,
@@ -209,7 +211,7 @@
 					AFAB874A1E45C3CA00C70E67 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = F9N98X7P4L;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -249,9 +251,7 @@
 			files = (
 				AFAB87591E45C3CA00C70E67 /* LaunchScreen.storyboard in Resources */,
 				AFAB87561E45C3CA00C70E67 /* Assets.xcassets in Resources */,
-				AFAAA8811E4860A30052A17A /* refresh.plist in Resources */,
 				AFAB87541E45C3CA00C70E67 /* Main.storyboard in Resources */,
-				AFAAA8831E4864F70052A17A /* AKTA.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +454,7 @@
 			baseConfigurationReference = 8D0DC43E4D6AC4CCD17852E9 /* Pods-Unsplash.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = F9N98X7P4L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -464,10 +465,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.fandong.Unsplash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d2f4ecfa-8284-4fdf-95b5-1b4102ae7023";
-				PROVISIONING_PROFILE_SPECIFIER = unsplash_profile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -476,7 +478,7 @@
 			baseConfigurationReference = 918E34EB16982556A46656DE /* Pods-Unsplash.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = F9N98X7P4L;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -487,10 +489,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.fandong.Unsplash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "dde4eeb6-7f63-4598-85ab-db098eae5634";
-				PROVISIONING_PROFILE_SPECIFIER = unsplash_profile_dis;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

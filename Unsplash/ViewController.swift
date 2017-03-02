@@ -23,6 +23,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var page : NSInteger = 1
     
+    var refreshControl : UIRefreshControl!
     
     //懒加载
     lazy var dataArray:NSMutableArray = {
@@ -43,33 +44,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return collectionView;
     }()
     
-    lazy var helpBtn : UIButton = {
-        let helpBtn = UIButton.init(frame: CGRect.init(x: screenWidth - 64 - statusBarHeight / 2, y: screenHeight - 64 - statusBarHeight / 2, width: 64, height: 64))
-        helpBtn.addTarget(self, action: #selector(helpBtnAction), for: UIControlEvents.touchUpInside)
-        helpBtn.setImage(UIImage.init(named: "home_btn_help"), for: UIControlState.normal)
-        return helpBtn
-    }()
-    
     //生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.view.backgroundColor = UIColor.black
         self.view.addSubview(self.collectionView)
-        self.view.addSubview(self.helpBtn)
         self.initRefresh()
-        self.collectionView.mj_header.beginRefreshing()
     }
     
     func initRefresh()  {
-        let header = MJRefreshNormalHeader.init { 
-            self.page = 1
-            self.requestFirstPageData()
-        }
-        header?.stateLabel.textColor = UIColor.white
-        header?.lastUpdatedTimeLabel.textColor = UIColor.white
-        header?.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.white
-        self.collectionView.mj_header = header;
+        let refreshControl = UIRefreshControl.init()
+        refreshControl.tintColor = UIColor.white
+        refreshControl.addTarget(self, action: #selector(requestFirstPageData), for: UIControlEvents.valueChanged)
+        self.collectionView.addSubview(refreshControl)
+        self.refreshControl = refreshControl
+        self.collectionView.alwaysBounceVertical = true
     }
     
     //请求第一页数据
@@ -85,7 +75,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     let model = UnsplashPictureModel.mj_objectArray(withKeyValuesArray: array) as [AnyObject]
                     self.dataArray.addObjects(from: model)
                     self.collectionView.reloadData()
-                    self.collectionView.mj_header.endRefreshing()
+                    self.refreshControl.endRefreshing()
                     //第一页加载成功创建Footer
                     let footer = MJRefreshAutoNormalFooter.init {
                         self.page += 1
@@ -95,7 +85,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     self.collectionView.mj_footer = footer
                 }
             case.failure(let error):
-                self.collectionView.mj_header.endRefreshing()
+                self.refreshControl.endRefreshing()
                 log.error(error)
                 let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
                 hud.mode = MBProgressHUDMode.text
@@ -122,10 +112,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 self.collectionView.mj_footer.endRefreshing()
             }
         }
-    }
-    //Action
-    func helpBtnAction()  {
-        //进入帮助页面
     }
     //UICollectionViewDelegate
     func numberOfSections(in collectionView: UICollectionView) -> Int {

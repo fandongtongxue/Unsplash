@@ -11,12 +11,15 @@ import SDWebImage
 
 class PictureViewController: UIViewController {
     
-    var model : UnsplashPictureModel?
+    var model : UnsplashPictureModel!
+    
+    var tempImageUrl : String!
+    
     
     lazy var progressView:UIProgressView = {
         let progressView = UIProgressView.init(frame: CGRect.init(x: 0, y: statusBarHeight, width: screenWidth, height: 2))
         progressView.progressViewStyle = UIProgressViewStyle.bar
-        progressView.tintColor = UIColor.blue
+        progressView.tintColor = UIColor.white
         return progressView
     }()
     
@@ -30,7 +33,7 @@ class PictureViewController: UIViewController {
         var scrollViewHeight : CGFloat = 0.0
         scrollViewHeight = screenHeight - statusBarHeight
         var scrollViewWidth : CGFloat = 0.0
-        scrollViewWidth = self.StringToFloat(str: (self.model?.width)!) * scrollViewHeight / self.StringToFloat(str: (self.model?.height)!)
+        scrollViewWidth = self.stringToFloat(str: (self.model?.width)!) * scrollViewHeight / self.stringToFloat(str: (self.model?.height)!)
         log.info("适应后图片宽:" + String.init(format: "%.2f", scrollViewWidth) + "高:" + String.init(format: "%.2f", scrollViewHeight))
         //滚动视图
         let scrollView = UIScrollView.init(frame: CGRect.init(x: 0, y: statusBarHeight, width: screenWidth, height: screenHeight - statusBarHeight))
@@ -51,9 +54,10 @@ class PictureViewController: UIViewController {
         })
         self.view.addSubview(self.progressView)
         //按钮
-        let closeBtn = UIButton.init(frame: CGRect.init(x: screenWidth - 64 - statusBarHeight / 2, y: statusBarHeight * 3 / 2, width: 64, height: 64))
+        let closeBtn = UIButton.init(frame: CGRect.init(x: screenWidth - 36 - statusBarHeight / 2, y: statusBarHeight, width: 64, height: 64))
         closeBtn.addTarget(self, action: #selector(dismissVC), for: UIControlEvents.touchUpInside)
-        closeBtn.setImage(UIImage.init(named: "picture_btn_close"), for: UIControlState.normal)
+        closeBtn.setTitle("关闭", for: UIControlState.normal)
+        closeBtn.sizeToFit()
         self.view.addSubview(closeBtn)
     }
     
@@ -70,7 +74,7 @@ class PictureViewController: UIViewController {
         return UIStatusBarStyle.lightContent
     }
     //String to Float
-    func StringToFloat(str:String)->(CGFloat){
+    func stringToFloat(str:String)->(CGFloat){
         let string = str
         var cgFloat: CGFloat = 0
         if let doubleValue = Double(string)
