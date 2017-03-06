@@ -51,6 +51,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.view.backgroundColor = UIColor.black
         self.view.addSubview(self.collectionView)
         self.initRefresh()
+        self.requestFirstPageData()
     }
     
     func initRefresh()  {
@@ -64,6 +65,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //请求第一页数据
     func requestFirstPageData() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         page = 1
         let firstUrl = url + String.init(format: "%d", page)
         Alamofire.request(firstUrl, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON(queue: DispatchQueue.main, options: .mutableContainers) { (response) in
@@ -84,9 +86,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     footer?.stateLabel.textColor = UIColor.white
                     self.collectionView.mj_footer = footer
                 }
+                MBProgressHUD.hide(for: self.view, animated: true)
             case.failure(let error):
                 self.refreshControl.endRefreshing()
                 log.error(error)
+                MBProgressHUD.hide(for: self.view, animated: true)
                 let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
                 hud.mode = MBProgressHUDMode.text
                 hud.label.text = String.init(format: "%@", error as CVarArg)
