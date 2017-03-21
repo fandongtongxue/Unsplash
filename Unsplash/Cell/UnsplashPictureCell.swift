@@ -26,7 +26,7 @@ class UnsplashPictureCell: UICollectionViewCell {
     }
     
     func setModel(model:UnsplashPictureModel) {
-        self.imageView?.sd_setImage(with: URL.init(string: model.urls.thumb), placeholderImage: nil, options: SDWebImageOptions.progressiveDownload)
+        self.imageView?.sd_setImage(with: URL.init(string: model.urls.thumb), placeholderImage: UIImage.init(named: "picture_img_default"), options: SDWebImageOptions.progressiveDownload)
     }
     
     required init(coder aDecoder: NSCoder) {

@@ -13,7 +13,7 @@ import Alamofire
 import MJExtension
 import MJRefresh
 
-let url = "https://api.unsplash.com/photos/?client_id=522f34661134a2300e6d94d344a7ab6424e028a51b31353363b7a8cce11d73b6&per_page=20&page="
+let url = "https://api.unsplash.com/photos/?client_id=522f34661134a2300e6d94d344a7ab6424e028a51b31353363b7a8cce11d73b6&per_page=30&page="
 let cellId = "UnsplashPictureCellID"
 let statusBarHeight  : CGFloat = 20
 let screenWidth : CGFloat = UIScreen.main.bounds.size.width
@@ -51,21 +51,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.view.backgroundColor = UIColor.black
         self.view.addSubview(self.collectionView)
         self.initRefresh()
-        self.requestFirstPageData()
+        self.requestFirstPageData(isNeedHUD: true)
     }
     
     func initRefresh()  {
         let refreshControl = UIRefreshControl.init()
         refreshControl.tintColor = UIColor.white
-        refreshControl.addTarget(self, action: #selector(requestFirstPageData), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(requestFirstPageData(isNeedHUD:)), for: UIControlEvents.valueChanged)
         self.collectionView.addSubview(refreshControl)
         self.refreshControl = refreshControl
         self.collectionView.alwaysBounceVertical = true
     }
     
     //请求第一页数据
-    func requestFirstPageData() {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+    func requestFirstPageData(isNeedHUD : Bool) {
+        if isNeedHUD {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+        }
         page = 1
         let firstUrl = url + String.init(format: "%d", page)
         Alamofire.request(firstUrl, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON(queue: DispatchQueue.main, options: .mutableContainers) { (response) in
