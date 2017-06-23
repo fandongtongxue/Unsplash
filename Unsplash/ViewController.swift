@@ -11,7 +11,6 @@ import SDWebImage
 import MBProgressHUD
 import Alamofire
 import MJExtension
-import MJRefresh
 
 let url = "https://api.unsplash.com/photos/?client_id=522f34661134a2300e6d94d344a7ab6424e028a51b31353363b7a8cce11d73b6&per_page=30&page="
 let cellId = "UnsplashPictureCellID"
@@ -19,7 +18,7 @@ let statusBarHeight  : CGFloat = 20
 let screenWidth : CGFloat = UIScreen.main.bounds.size.width
 let screenHeight : CGFloat = UIScreen.main.bounds.size.height
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     
     var page : NSInteger = 1
     
@@ -70,6 +69,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         page = 1
         let firstUrl = url + String.init(format: "%d", page)
+        log.info("请求地址:"+firstUrl)
         Alamofire.request(firstUrl, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON(queue: DispatchQueue.main, options: .mutableContainers) { (response) in
             switch response.result{
             case .success:
@@ -80,13 +80,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     self.dataArray.addObjects(from: model)
                     self.collectionView.reloadData()
                     self.refreshControl.endRefreshing()
-                    //第一页加载成功创建Footer
-                    let footer = MJRefreshAutoNormalFooter.init {
-                        self.page += 1
-                        self.requestMorePageData(page: self.page)
-                    }
-                    footer?.stateLabel.textColor = UIColor.white
-                    self.collectionView.mj_footer = footer
                 }
                 MBProgressHUD.hide(for: self.view, animated: true)
             case.failure(let error):
@@ -103,6 +96,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     func requestMorePageData(page:NSInteger) {
         let firstUrl = url + String.init(format: "%d", page)
+        log.info("请求地址:"+firstUrl)
         Alamofire.request(firstUrl, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON(queue: DispatchQueue.main, options: .mutableContainers) { (response) in
             switch response.result{
             case .success:
@@ -112,10 +106,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     self.dataArray.addObjects(from: model)
                 }
                 self.collectionView.reloadData()
-                self.collectionView.mj_footer.endRefreshing()
             case.failure(let error):
                 print(error)
-                self.collectionView.mj_footer.endRefreshing()
             }
         }
     }
@@ -140,6 +132,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let vc = PictureViewController()
         vc.model = model
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    //UIScrollViewDelegate
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y + (scrollView.frame.size.height) > scrollView.contentSize.height {
+            log.info("到底")
+        }
     }
     
     override func didReceiveMemoryWarning() {
