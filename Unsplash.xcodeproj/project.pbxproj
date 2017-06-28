@@ -21,7 +21,6 @@
 		AFAB876A1E45CB2400C70E67 /* UnsplashUrlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAB87691E45CB2400C70E67 /* UnsplashUrlModel.swift */; };
 		AFAB876C1E45CB3100C70E67 /* UnsplashUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAB876B1E45CB3100C70E67 /* UnsplashUserModel.swift */; };
 		AFAB876E1E45CD6E00C70E67 /* UnsplashUserProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAB876D1E45CD6E00C70E67 /* UnsplashUserProfileModel.swift */; };
-		CBFEF6281EF4E0CA008D9DBA /* WaterFallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFEF6271EF4E0CA008D9DBA /* WaterFallLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +43,6 @@
 		AFAB87691E45CB2400C70E67 /* UnsplashUrlModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashUrlModel.swift; sourceTree = "<group>"; };
 		AFAB876B1E45CB3100C70E67 /* UnsplashUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashUserModel.swift; sourceTree = "<group>"; };
 		AFAB876D1E45CD6E00C70E67 /* UnsplashUserProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashUserProfileModel.swift; sourceTree = "<group>"; };
-		AFAB87771E45D59D00C70E67 /* Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
-		CBFEF6271EF4E0CA008D9DBA /* WaterFallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterFallLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +116,6 @@
 				AFAAA8771E48423E0052A17A /* Unsplash.entitlements */,
 				AFAAA87C1E484B890052A17A /* Controller */,
 				AFAAA8721E480FB80052A17A /* Cell */,
-				AFAB87761E45D58C00C70E67 /* Config */,
 				AFAB87661E45CAE300C70E67 /* Model */,
 				AFAB87611E45C7D800C70E67 /* ThirdPart */,
 				AFAB874E1E45C3CA00C70E67 /* AppDelegate.swift */,
@@ -150,15 +146,6 @@
 				AFAB876D1E45CD6E00C70E67 /* UnsplashUserProfileModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		AFAB87761E45D58C00C70E67 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				AFAB87771E45D59D00C70E67 /* Bridge.h */,
-				CBFEF6271EF4E0CA008D9DBA /* WaterFallLayout.swift */,
-			);
-			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,7 +303,6 @@
 				AFAB87511E45C3CA00C70E67 /* ViewController.swift in Sources */,
 				AFAB876E1E45CD6E00C70E67 /* UnsplashUserProfileModel.swift in Sources */,
 				AFAB874F1E45C3CA00C70E67 /* AppDelegate.swift in Sources */,
-				CBFEF6281EF4E0CA008D9DBA /* WaterFallLayout.swift in Sources */,
 				AFAB876C1E45CB3100C70E67 /* UnsplashUserModel.swift in Sources */,
 				AFAB876A1E45CB2400C70E67 /* UnsplashUrlModel.swift in Sources */,
 			);
